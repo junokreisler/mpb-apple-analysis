@@ -1,7 +1,14 @@
 # mpb-apple-analysis
 Repository containing the code used in the analysis of fruits diversity from various apple accessions.
+The report for this lab rotation is saved as `mpb_rotation_report.pdf`
 
-The report is saved as `mpb_rotation_report.pdf`.
+## Expected structure of data to ensure the code runs
+
+The data itself is NOT included here. 
+Please ensure that your project folder is structured in the following manner, or otherwise the code might not produce any results.
+
+(insert structure here TBD)
+
 
 Libraries used:
 * `numpy`
