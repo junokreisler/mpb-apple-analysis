@@ -20,7 +20,7 @@ Summaries of apple colors and shapes of apples from Wädenswil and Grabs in 2021
 Image data would be too massive and tedious to analyze locally (and virtually) and would only help with data concerning edges/shapes. However, a script dealing with edge data, clustering apples by similarities of edge distances to center, is also provided. Instead, the shape classes obtained in prior analysis are used as additional traits/variables.
 
 
-## Information on scripts used in the project
+## Information on contents of the repository
 
 * `utils.py` - module containing functions used in data pre-processing
 * `visualization.py` - module containing functions used in data visualization incl. plot generation
@@ -30,6 +30,7 @@ Image data would be too massive and tedious to analyze locally (and virtually) a
 * folder `2_results` - plots showing results and tabular data output from the second approach
 * `extra_image_shape.py` - extra script for (rough) edge extraction obtaining radius vs degree data from each image.
 * `extra_polar_clustering.py` - script for obtaining radius vs radian curves from location and year summary files, manually classifying into shape classes and outputting badges with top cluster assignment.
+* `extra_polar_clustering_assignments.csv` - CSV file containing badges and their top shape assignment based on clustering, as well as the values of the top K PCs (representing >=80% of the variance) for reconstructing the PCA plots for clustering.
 
 ## Analysis approaches
 
