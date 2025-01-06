@@ -4,7 +4,7 @@ The report for this lab rotation is saved as `mpb_rotation_report.pdf`
 
 ## Requirements and expected data
 
-The data itself is NOT included here. 
+The input data is NOT included here. 
 Please ensure that your project folder is structured in the following manner, or otherwise the code might not produce any results.
 
 (insert structure here TBD)
