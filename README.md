@@ -20,7 +20,7 @@ Summaries of apple colors and shapes of apples from Wädenswil and Grabs in 2021
 Image data would be too massive and tedious to analyze locally (and virtually) and would only help with data concerning edges/shapes. However, a script dealing with edge data, clustering apples by similarities of edge distances to center, is also provided. Instead, the shape classes obtained in prior analysis are used as additional traits/variables.
 
 
-## Structure:
+## Information on scripts used in the project
 
 * `utils.py` - module containing functions used in data pre-processing
 * `visualization.py` - module containing functions used in data visualization incl. plot generation
