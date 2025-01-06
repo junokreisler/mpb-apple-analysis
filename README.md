@@ -28,8 +28,8 @@ Image data would be too massive and tedious to analyze locally (and virtually) a
 * `main2.py` - main code for the second analysis approach
 * folder `1_results` - plots showing results and tabular data output from the first approach
 * folder `2_results` - plots showing results and tabular data output from the second approach
-* `extra_image_shape.py` - extra script for (rough) edge extraction and clustering by similarities of edge distances to center (radius vs degree) curves.
-* `extra_polar_clustering.py` - script for obtaining radius vs degree curves from location and year summary files, manually classifying into shape classes and outputting badges with top cluster assignment.
+* `extra_image_shape.py` - extra script for (rough) edge extraction obtaining radius vs degree data from each image.
+* `extra_polar_clustering.py` - script for obtaining radius vs radian curves from location and year summary files, manually classifying into shape classes and outputting badges with top cluster assignment.
 
 ## Analysis approaches
 
