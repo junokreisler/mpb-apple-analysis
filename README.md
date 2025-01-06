@@ -67,7 +67,7 @@ More detailed look at the variance of apple fruit color appearances and shapes u
 4. Using the first K PCs (representing >=80% of the variance), the intra-badge distances are calculated. 3D PCA plot of the badge centroids is obtained for each year and location. 
 5. A list of badges with their intra-badge distances from above calculations is obtained for both years and locations in one file.
 
-## Shape clustering
+### Shape clustering
 
 Two scripts were written for analyzing shape data.
 
