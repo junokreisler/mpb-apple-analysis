@@ -34,10 +34,10 @@ Image data would be too massive and tedious to analyze locally (and virtually) a
 Rough overview of the consistency of average badge apple fruit color appearances, using a "most average" apple as a singular representative of a badge in a given year or location. The analysis involves extracting the best average color hue representative for badges with at least N apples imaged, choosing a real apple whose color hue frequency distributions are least different from the calculated hue frequency distribution averages in the given badge+location+year.
 
 #### Steps
-1. First, the average prevalence at each "value" of HUE and SATURATION is measured. If the number of apple samples is at least N (N = 5 default),
+1. First, the average prevalence at each "value" of HUE (H) and SATURATION (S) is measured. If the number of apple samples is at least N (N = 5 default),
 
   2. The H and S values of each individual apple are compared with the means for each H/S values of the whole badge's batch.
-  3. The individual appleNR with the lowest Manhattan distance to the batch average is chosen as the "color representative apple"
+  3. The individual appleNR with the lowest Manhattan distance to the batch average for H and S values is chosen as the "color representative apple". In further analysis from here onwards, only the H values are considered.
   4. The badge and it's representative appleNR are returned as a dictionary.   
 5. Using the badge annotation file, only common badges present in both years and locations are kept.
 6. The average apple representative hue distributions are extracted and the average apple becomes the representative of the badge in the given year and location.
