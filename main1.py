@@ -197,47 +197,15 @@ print('\nTotal top hues:\t', len(w_2021_maxvaldict.keys()), '\t', len(w_2022_max
       '\t', len(g_2021_maxvaldict.keys()), '\t', len(g_2022_maxvaldict.keys()))
 
 # CARRY OUT PCA
-def prepare_pca(feature_df, n_pc):
-  # Standardize the data
-  scaler = StandardScaler()
-  colnames = ['PC'+str(i+1) for i in range(n_pc)]
+w_2021_pca = utils.prepare_pca(w_2021_h, 3)
+g_2021_pca = utils.prepare_pca(g_2021_h, 3)
+w_2022_pca = utils.prepare_pca(w_2022_h, 3)
+g_2022_pca = utils.prepare_pca(g_2022_h, 3)
 
-  feature_df_new = feature_df.T.iloc[1:]
-  scaled_data = scaler.fit_transform(feature_df_new)
-  pca = PCA(n_components=n_pc)
-  principal_components = pca.fit_transform(scaled_data)
-  pc_df = pd.DataFrame(data=principal_components, columns=colnames)  # Adjust column names as needed
-  explained_variance = pca.explained_variance_ratio_
-
-  print(f"Explained variance by each component: {explained_variance}")
-  print(f"Total explained variance: {round(sum(explained_variance),5)}")
-
-  pc_df['badge'] = feature_df.columns[1:]
-  pc_df['outlier'] = False
-
-  return pc_df
-
-def add_color_label(pca_df, max_val_dict_df):
-  pca_df['color'] = ''
-  top_colors = {0.208333:'green',0.180556:'yellow/green',0.152778:'yellow',
-          0.125:'red/yellow', 0.097222:'red', 0.041667:'red',
-          0.069444:'red', 0.013889:'red'}
-  for badge in pca_df.badge:
-    for key in max_val_dict_df:
-      if badge in max_val_dict_df[key][1:len(max_val_dict_df[key])]:
-        pca_df['color'][pca_df.badge == badge] = top_colors[key]
-
-  return pca_df
-
-w_2021_pca = prepare_pca(w_2021_h, 3)
-g_2021_pca = prepare_pca(g_2021_h, 3)
-w_2022_pca = prepare_pca(w_2022_h, 3)
-g_2022_pca = prepare_pca(g_2022_h, 3)
-
-w_2021_pca = add_color_label(w_2021_pca, w_2021_maxvaldict)
-w_2022_pca = add_color_label(w_2022_pca, w_2022_maxvaldict)
-g_2021_pca = add_color_label(g_2021_pca, g_2021_maxvaldict)
-g_2022_pca = add_color_label(g_2022_pca, g_2022_maxvaldict)
+w_2021_pca = utils.add_color_label(w_2021_pca, w_2021_maxvaldict)
+w_2022_pca = utils.add_color_label(w_2022_pca, w_2022_maxvaldict)
+g_2021_pca = utils.add_color_label(g_2021_pca, g_2021_maxvaldict)
+g_2022_pca = utils.add_color_label(g_2022_pca, g_2022_maxvaldict)
 
 # obtaining and saving the PCA plots for each location in each year - color distribution for all badges that have at least N apples measured
 
