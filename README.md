@@ -4,15 +4,18 @@ The report for this lab rotation is saved as `mpb_rotation_report.pdf`
 
 ## Requirements and expected data
 
-The input data is NOT included here. 
-Please ensure that your project folder is structured in the following manner, or otherwise the code might not produce any results.
-
-(insert structure here TBD)
+The input data is NOT included here. The scripts here assume that the analysis starts from the extraction of the zip file with subdirectories of years, within them subdirectories of locations, where summary files can be found.
 
 Libraries used:
+* `os`
 * `numpy`
+* `math`
 * `pandas`
 * `matplotlib`
+* `seaborn`
+* `cv2`
+* `sklearn`
+* `skimage`
 
 Data used:
 
@@ -32,9 +35,11 @@ Image data would be too massive and tedious to analyze locally (and virtually) a
 * `extra_polar_clustering.py` - script for obtaining radius vs radian curves from location and year summary files, manually classifying into shape classes and outputting badges with top cluster assignment.
 * `extra_polar_clustering_assignments.csv` - CSV file containing badges and their top shape assignment based on clustering, as well as the values of the top K PCs (representing >=80% of the variance) for reconstructing the PCA plots for clustering.
 
-## Analysis approaches
+## Analysis parts
 
-### Approach 1 - overview of apple color diversity
+### Part 1 - overview of apple color diversity
+
+Script: `01_main_pca.py`
 
 #### Summary
 
@@ -49,14 +54,27 @@ Rough overview of the consistency of average badge apple fruit color appearances
 5. Using the badge annotation file, only common badges present in both years and locations are kept.
 6. The average apple representative hue distributions are extracted and the average apple becomes the representative of the badge in the given year and location.
 7. The apple is assigned an "expected" color class based on the most prevalent hue (red, red-yellow, yellow, yellow-green, green)
-8. PCA is carried out on the dataset of badge-representing apples to obtain an average color distribution for each location and year. 2D (2nd, 3rd PC) and 3D (1st, 2nd, 3rd PC) PCA plots are obtained. 
-   * Additional plots with colors from other years, locations on each color plot are also obtained to look at consistency.
+8. PCA is carried out on the dataset of badge-representing apples to obtain an average color distribution for each location and year. 2D (2nd, 3rd PC) PCA plots are obtained.
 
-### Approach 2 - intra- and inter-badge (genotype x environment) variation estimation
+### Part 2 - shape/size estimation and classification 
+
+#### Summary
+* `02_shape_size.py` performs de novo height vs width (pixel) measurements of apples and obtains the variance of each cultivar in terms of these two dimensions, for both years and locations. This scrips creates a very large amount of descriptive plots, which can be viewed with more information in the folder `02_output`. Tabular data is generated that would serve as a recommendation for badges to use for generative model learning, based on height and width variance over the years and locations.
+
+#### Steps
+
+1. a
+2. b
+3. c
+4. d
+5. e
+
+### Part 3 - intra- and inter-badge (genotype x environment) variation estimation
 
 #### Summary
 
-More detailed look at the variance of apple fruit color appearances and shapes using the shortlist of common badges obtained in the previous analysis approach. Tabular data is generated that would serve as a recommendation for badges to use for generative model learning.
+More detailed look at the variance of apple fruit color appearances and shapes using the shortlist of common badges obtained in the previous analysis approach. Tabular data is generated that would serve as a recommendation for badges to use for generative model learning based on the consistency of apple coloration, as well as shape data from the previous step.
+
 
 #### Steps
 
@@ -67,11 +85,3 @@ More detailed look at the variance of apple fruit color appearances and shapes u
   * plots with all dominant color labels highlighted. 
 4. Using the first K PCs (representing >=80% of the variance), the intra-badge distances are calculated. 3D PCA plot of the badge centroids is obtained for each year and location. 
 5. A list of badges with their intra-badge distances from above calculations is obtained for both years and locations in one file.
-
-### Shape clustering
-
-Two scripts were written for analyzing shape data.
-
-* `extra_image_shape.py` deals with raw image data, which there was very little of (as the size of all image data would exceed my currently available computational capacities).
-* `extra_polar_clustering.py` performs de novo clustering of recorded radius vs radian measurements, using the means normalized curves of camera 2 to 5 for each apple. Based on clustering results, S unique shape classes were identified and badges were assigned to top shape hit. This data is used here as another way to label the PCA plots, as continuous and discrete variables cannot be analyzed simultaneously the way it has been done in this project.
-
