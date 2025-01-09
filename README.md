@@ -27,13 +27,14 @@ Image data would be too massive and tedious to analyze locally (and virtually) a
 
 * `utils.py` - module containing functions used in data pre-processing
 * `visualization.py` - module containing functions used in data visualization incl. plot generation
-* `main1.py` - main code for the first analysis approach
-* `main2.py` - main code for the second analysis approach
+* `01_main_pca.py` - main code for the first part
+* `02_shape_size.py` - main code for the second part, descriptive shape data and obtaining shape-related variables for selected cultivars
+* `03_consistency_pca_color_shape.py` - script for third part
 * folder `1_results` - plots showing results and tabular data output from the first approach
 * folder `2_results` - plots showing results and tabular data output from the second approach
-* `extra_image_shape.py` - extra script for (rough) edge extraction obtaining radius vs degree data from each image.
-* `extra_polar_clustering.py` - script for obtaining radius vs radian curves from location and year summary files, manually classifying into shape classes and outputting badges with top cluster assignment.
-* `extra_polar_clustering_assignments.csv` - CSV file containing badges and their top shape assignment based on clustering, as well as the values of the top K PCs (representing >=80% of the variance) for reconstructing the PCA plots for clustering.
+* `badges_hw_ratio_assignments.csv` - CSV file containing badges and their top shape assignment based on clustering, as well as the values of the top K PCs (representing >=80% of the variance) for reconstructing the PCA plots for clustering.
+* `cultivar_plot_data_appleLevel.csv` - CSV file for locating the plots of cultivars for 2021, 2022 wae/gra 2x2 plots obtained in the second part.
+* `intra_cultivar_distances.csv` - CSV file containing intra-cultivar distances for each year and location, measured in pixels (mappable to cm or mm by comparing with summary dataset), obtained in the seocond part.
 
 ## Analysis parts
 
@@ -44,6 +45,7 @@ Script: `01_main_pca.py`
 #### Summary
 
 Rough overview of the consistency of average badge apple fruit color appearances, using a "most average" apple as a singular representative of a badge in a given year or location. The analysis involves extracting the best average color hue representative for badges with at least N apples imaged, choosing a real apple whose color hue frequency distributions are least different from the calculated hue frequency distribution averages in the given badge+location+year.
+Plots obtained in this part can be viewed on `1_results`.
 
 #### Steps
 1. First, the average prevalence at each "value" of HUE (H) and SATURATION (S) is measured. If the number of apple samples is at least N (N = 5 default),
@@ -58,8 +60,11 @@ Rough overview of the consistency of average badge apple fruit color appearances
 
 ### Part 2 - shape/size estimation and classification 
 
+Script: `02_shape_size.py` 
+
 #### Summary
-* `02_shape_size.py` performs de novo height vs width (pixel) measurements of apples and obtains the variance of each cultivar in terms of these two dimensions, for both years and locations. This scrips creates a very large amount of descriptive plots, which can be viewed with more information in the folder `02_output`. Tabular data is generated that would serve as a recommendation for badges to use for generative model learning, based on height and width variance over the years and locations.
+
+De novo height vs width (pixel) measurements of apples and obtains the variance of each cultivar in terms of these two dimensions, for both years and locations. This scrips creates a very large amount of descriptive plots, which can be viewed with more information in the folder `2_results` Tabular data is generated that would serve as a recommendation for badges to use for generative model learning, based on height and width variance over the years and locations.
 
 #### Steps
 
@@ -71,10 +76,11 @@ Rough overview of the consistency of average badge apple fruit color appearances
 
 ### Part 3 - intra- and inter-badge (genotype x environment) variation estimation
 
+Script: `03_consistency_pca_color_shape.py`
+
 #### Summary
 
 More detailed look at the variance of apple fruit color appearances and shapes using the shortlist of common badges obtained in the previous analysis approach. Tabular data is generated that would serve as a recommendation for badges to use for generative model learning based on the consistency of apple coloration, as well as shape data from the previous step.
-
 
 #### Steps
 
