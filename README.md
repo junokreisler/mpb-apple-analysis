@@ -26,7 +26,6 @@ Image data would be too massive and tedious to analyze locally (and virtually) a
 ## Information on contents of the repository
 
 * `utils.py` - module containing functions used in data pre-processing
-* `visualization.py` - module containing functions used in data visualization incl. plot generation
 * `01_main_pca.py` - main code for the first part
 * `02_shape_size.py` - main code for the second part, descriptive shape data and obtaining shape-related variables for selected cultivars
 * `03_consistency_pca_color_shape.py` - script for third part
