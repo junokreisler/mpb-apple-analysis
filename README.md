@@ -42,7 +42,7 @@ Image data would be too massive and tedious to analyze locally (and virtually) a
 
 Script: `01_main_pca.py`
 
-![Example plot from part 3.](example_part3.png)
+![Example plot from part 1.](example_part1.png)
 
 
 #### Summary
