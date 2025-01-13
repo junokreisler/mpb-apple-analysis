@@ -8,7 +8,7 @@ import matplotlib.colors as mcolors
 import seaborn as sns
 import math
 
-script_path = '/content/drive/MyDrive/Colab Notebooks/utils_apple.py'
+script_path = '/content/drive/MyDrive/Colab Notebooks/utils.py'
 apple_data_path = ''
 
 annotation_path = ''
@@ -114,10 +114,10 @@ g2021_pca_df = format_hue_df_for_pca(g2021_filt, hue_averages = True)
 w2022_pca_df = format_hue_df_for_pca(w2022_filt, hue_averages = True)
 g2022_pca_df = format_hue_df_for_pca(g2022_filt, hue_averages = True)
 
-w2021_pca_prepared = utils_apple.prepare_pca(w2021_pca_df.fillna(0), 3, overall_df = True)
-g2021_pca_prepared = utils_apple.prepare_pca(g2021_pca_df.fillna(0), 3, overall_df = True)
-w2022_pca_prepared = utils_apple.prepare_pca(w2022_pca_df.fillna(0), 3, overall_df = True)
-g2022_pca_prepared = utils_apple.prepare_pca(g2022_pca_df.fillna(0), 3, overall_df = True)
+w2021_pca_prepared = utils.prepare_pca(w2021_pca_df.fillna(0), 3, overall_df = True)
+g2021_pca_prepared = utils.prepare_pca(g2021_pca_df.fillna(0), 3, overall_df = True)
+w2022_pca_prepared = utils.prepare_pca(w2022_pca_df.fillna(0), 3, overall_df = True)
+g2022_pca_prepared = utils.prepare_pca(g2022_pca_df.fillna(0), 3, overall_df = True)
 w2021_filt = hue_rearranger(w2021, n_unique_hues)
 g2021_filt = hue_rearranger(g2021, n_unique_hues)
 w2022_filt = hue_rearranger(w2022, n_unique_hues)
@@ -150,17 +150,17 @@ w2022_pca_prepared.dropna(inplace=True)
 g2022_pca_prepared.dropna(inplace=True)
 
 # export PCA plots
-utils_apple.plot_cultivar_size_consistency([w2021_pca_prepared.drop('PC1', axis=1), w2022_pca_prepared.drop('PC1', axis=1),
+utils.plot_cultivar_size_consistency([w2021_pca_prepared.drop('PC1', axis=1), w2022_pca_prepared.drop('PC1', axis=1),
                                             g2021_pca_prepared.drop('PC1', axis=1), g2022_pca_prepared.drop('PC1', axis=1)],
                                           'PCA of all apple data based on per camera sorted hue averages, height and width\nin Wädenswil and Grabs in 2021 and 2022.',
                                            used_cultivars, os.path.join(output_path,'pca_average_hue_pc23'), 
                                            include_guidelines = False)
-utils_apple.plot_cultivar_size_consistency([w2021_pca_prepared.drop('PC2', axis=1), w2022_pca_prepared.drop('PC2', axis=1), 
+utils.plot_cultivar_size_consistency([w2021_pca_prepared.drop('PC2', axis=1), w2022_pca_prepared.drop('PC2', axis=1), 
                                             g2021_pca_prepared.drop('PC2', axis=1), g2022_pca_prepared.drop('PC2', axis=1)],
                                           'PCA of all apple data based on per camera sorted hue averages, height and width\nin Wädenswil and Grabs in 2021 and 2022.',
                                            used_cultivars, os.path.join(output_path,'pca_average_hue_pc13'), 
                                            include_guidelines = False)
-utils_apple.plot_cultivar_size_consistency([w2021_pca_prepared, w2022_pca_prepared, g2021_pca_prepared, g2022_pca_prepared],
+utils.plot_cultivar_size_consistency([w2021_pca_prepared, w2022_pca_prepared, g2021_pca_prepared, g2022_pca_prepared],
                                           'PCA of all apple data based on per camera sorted hue averages, height and width\nin Wädenswil and Grabs in 2021 and 2022.',
                                            used_cultivars, os.path.join(output_path,'pca_average_hue_pc12'), 
                                            include_guidelines = False)
