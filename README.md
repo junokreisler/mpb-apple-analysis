@@ -16,6 +16,7 @@ Libraries used:
 * `cv2`
 * `sklearn`
 * `skimage`
+* `statsmodels`
 
 Data used:
 
@@ -57,7 +58,7 @@ Plots obtained in this part can be viewed on `1_results`.
 7. The apple is assigned an "expected" color class based on the most prevalent hue (red, red-yellow, yellow, yellow-green, green)
 8. PCA is carried out on the dataset of badge-representing apples to obtain an average color distribution for each location and year. 2D (2nd, 3rd PC) PCA plots are obtained.
 
-### Part 2 - shape/size estimation and classification 
+### Part 2 - shape/size estimation
 
 Script: `02_shape_size.py` 
 
@@ -67,11 +68,12 @@ De novo height vs width (pixel) measurements of apples and obtains the variance 
 
 #### Steps
 
-1. a
-2. b
-3. c
-4. d
-5. e
+1. The shortlisted common badges (at least 5 apples per badge in all years+locations) from the previous analysis step are merged with measured trait information (height, width) at individual apple level.
+2. Mean height-width ratio (HWR) of each apple is obtained to be used as proxy for the apple shape, as (based on the supplementary material 2 of the FruitPhenoBox paper), there rarely is a cultivar that has the same shape class out of the 13 used in the original analysis.
+3. Height vs width plots of all apples are made, iteratively highlighting (default - 6) cultivars in each year and location simultaneously. A reference line at HWR=1 is drawn on each individual plot.
+4. Intra-cultivar (cluster) distances are measured and saved.
+5. A plot of cultivar-average HWR vs stdev(as fraction of HWR) is done with iteratively highlighting (default - 6) cultivars in each year and location simultaneously. A reference / recommendation line at stdev = 0.05 is drawn on each individual plot to represente an upper bound of 5% error in HWR, which implies that the apples in the cultivar have very variable HWRs and might not be reliably predicted.
+6. Plots of step 3 and 5 are saved as folders (here - zip files in the folder 2_results) containing multiple plots for 6 cultivars each, and a CSV table with cultivar assignments to plot.
 
 ### Part 3 - intra- and inter-badge (genotype x environment) variation estimation
 
@@ -84,9 +86,8 @@ More detailed look at the variance of apple fruit color appearances and shapes u
 #### Steps
 
 1. The shortlisted common badges (at least 5 apples per badge in all years+locations) from the previous analysis step are used.
-2. Instead of using the mean of hue distributions of 5 cameras for an apple, all individual cameras' hue distributions are transformed into one vector of 36 (number of unique hues) * 5 (number of cameras) dimensions, with each camera's groups first sorted by ascending mean hue. A "dominant color" label is given to each apple, similarily to the previous analysis step (only for visualization purposes). A variable value of `0`, `0.25`, `0.5`, `0.75` or `1.00` is given to each apple to represent one of the 5 different top shape (top lobedness) classes.
-3. 3D PCA plots of apples of the shortlisted badges are obtained for each year and location, yielding:
-  * multiple plots with X (X = 10 default) badges highlighted at a time;
-  * plots with all dominant color labels highlighted. 
-4. Using the first K PCs (representing >=80% of the variance), the intra-badge distances are calculated. 3D PCA plot of the badge centroids is obtained for each year and location. 
-5. A list of badges with their intra-badge distances from above calculations is obtained for both years and locations in one file.
+2. Instead of using the mean of hue distributions of 5 cameras for an apple, all individual cameras' hue distributions are transformed into one vector of 12 (relevant third of unique hues) * 5 (number of cameras) dimensions, with each camera's groups first sorted by ascending mean hue. A set of vectors is obtained for each apple. Additionally, another set of vectors is obtained, where instead of 12 hues, each camera's mean hues are sorted in ascending order (therefore, hue value from red towards green). The heights and widths, as well as HWRs from the previous part are appended as additional variables for each set of vectors.
+3. PCA plots of apples of the shortlisted badges are obtained for each year and location, yielding:
+  * multiple plots with (default = 6)
+4. Using the first K PCs (representing ~80% or more of the variance - default = 22 for set 1 and 3 for set 2), the intra-badge distances are calculated. 2D PCA plots of top 3 PCs against each other are obtained, each saved PC comparison saved in its own folder.
+
