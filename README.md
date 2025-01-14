@@ -32,6 +32,7 @@ Image data would be too massive and tedious to analyze locally (and virtually) a
 * `03_consistency_pca_color_shape.py` - script for third part
 * folder `1_results` - plots showing results and tabular data output from the first approach
 * folder `2_results` - plots showing results and tabular data output from the second approach
+* folder `3_results` - plots showing results and tabular data output from the third approach
 * `dims_filtered_[...].csv` - CSV files containing each apple of the shortlisted badges, their height, width and height-width ratio.
 * `cultivar_plot_data_appleLevel.csv` - CSV file for locating the plots of cultivars for 2021, 2022 wae/gra 2x2 plots obtained in the second part.
 * `intra_cultivar_distances.csv` - CSV file containing intra-cultivar distances for each year and location, measured in pixels (mappable to cm or mm by comparing with summary dataset), obtained in the seocond part.
