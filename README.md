@@ -42,9 +42,6 @@ Image data would be too massive and tedious to analyze locally (and virtually) a
 
 Script: `01_main_pca.py`
 
-![Example plot from part 1.](example_part1.png)
-
-
 #### Summary
 
 Rough overview of the consistency of average badge apple fruit color appearances, using a "most average" apple as a singular representative of a badge in a given year or location. The analysis involves extracting the best average color hue representative for badges with at least N apples imaged, choosing a real apple whose color hue frequency distributions are least different from the calculated hue frequency distribution averages in the given badge+location+year.
