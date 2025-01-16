@@ -10,6 +10,12 @@ https://drive.google.com/drive/folders/17JQ9v4aYSQ6ZnnGyTp7r_Xe5O2osRgpG?usp=sha
 
 #### Average sorted camera hue PCA plots (`pca_average_hue_pc[xy]`)
 
+Average sorted camera hues:
+
+1. From each camera view, the average hue was obtained (with highest 10% hue levels - deep violet/red - added to the lowest 10%).
+2. Cameras were sorted by increasing average hue, i.e. from the reddest to the greenest camera.
+3. Hence, the reddest average camera values are compared with other reddest values, greenest with greenest.
+
 The top 3 PCs represent 92-94% (depending on year and location) of all variance. General point background seems to be quite similar for all 4 datasets. Points that look like outliers shouldn't necessarily be considered that, as they often form a significant cultivar cluster themselves.
 
 PC1 correlates very highly with the height-width ratio, and PC3 seems to correlate with the sorted camera hues. The PCA plots for Wädenswil 2021 and Grabs 2022 for reference can be viewed in the parent folder (NOT subfolders) with names `[w2021/g2022]_[..]_pca.png`
