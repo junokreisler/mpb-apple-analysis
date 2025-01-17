@@ -1,1 +1,4 @@
-plots from the first analysis approach
+The first part serves mostly as an overview and a filter for relevant badges / cultivars in the next part. The most important "result" of this part is the filtered annotation, summarizing the badges and the cultivars used in further analysis. This also describes the covered genetic landscape for the SNP inputs for the generative neural network.
+The only generated plots here are PCA plots with dominating color labels, which are fortunately nearly identical for all locations and years. 
+
+As an example, the 2D PCA plots of Wädenswil 2021 and 2022 badge averages are shown in the results here. Each datapoint in the PCA plot is the determined "average representative apple" of each filtered badge that has at least 5 apples.
